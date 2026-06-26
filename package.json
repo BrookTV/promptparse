@@ -25,19 +25,19 @@
   "browser": "dist/index.global.js",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./generate": {
+      "types": "./dist/generate/index.d.ts",
       "import": "./dist/generate/index.mjs",
-      "require": "./dist/generate/index.js",
-      "types": "./dist/generate/index.d.ts"
+      "require": "./dist/generate/index.js"
     },
     "./validate": {
+      "types": "./dist/validate/index.d.ts",
       "import": "./dist/validate/index.mjs",
-      "require": "./dist/validate/index.js",
-      "types": "./dist/validate/index.d.ts"
+      "require": "./dist/validate/index.js"
     }
   },
   "files": [
