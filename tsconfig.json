@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": [ "ESNext", "DOM" ],
     "module": "ESNext",
     "moduleResolution": "bundler",
 
@@ -15,8 +15,8 @@
     "forceConsistentCasingInFileNames": true,
 
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [ "./src/*" ]
     }
   },
-  "include": ["./src"]
+  "include": [ "./src" ]
 }

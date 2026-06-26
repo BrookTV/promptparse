@@ -32,6 +32,22 @@ test('Parse payload (strict) with valid checksum and get tag value', () => {
   ).toBe('0066801111111')
 })
 
+test('Parse payload (strict) which contain non-ascii characters with valid checksum and make valid crc', () => {
+  expect(
+    parse(
+      '00020101021251400116A0000006770101120206001234030600123452041234530376454035005802TH5907ร้านค้า6007Bangkok6304599E',
+      true,
+    )?.getTagValue('59'),
+  ).toBe('ร้านค้า')
+
+  expect(
+    parse(
+      '00020101021251400116A0000006770101120206001234030600123452041234530376454035005802CN5902商人6007Beijing63042B8C',
+      true,
+    )?.getTagValue('59'),
+  ).toBe('商人')
+})
+
 test('Generate Any ID', () => {
   expect(
     generate.anyId({
@@ -177,9 +193,7 @@ test('Convert BOT Barcode to Bill Payment (Invalid, data loss)', () => {
 
 test('Validate AnyID (MSISDN, no amount)', () => {
   expect(
-    validate.anyId(
-      generate.anyId({ type: 'MSISDN', target: '0812223333' }),
-    ),
+    validate.anyId(generate.anyId({ type: 'MSISDN', target: '0812223333' })),
   ).toEqual({ type: 'MSISDN', target: '0812223333' })
 })
 
@@ -193,9 +207,7 @@ test('Validate AnyID (MSISDN, with amount)', () => {
 
 test('Validate AnyID (NATID)', () => {
   expect(
-    validate.anyId(
-      generate.anyId({ type: 'NATID', target: '1234567890123' }),
-    ),
+    validate.anyId(generate.anyId({ type: 'NATID', target: '1234567890123' })),
   ).toEqual({ type: 'NATID', target: '1234567890123' })
 })
 
